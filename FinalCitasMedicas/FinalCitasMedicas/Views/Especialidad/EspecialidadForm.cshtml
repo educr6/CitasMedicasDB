@@ -1,0 +1,24 @@
+﻿@model FinalCitasMedicas.tblEspecialidad
+
+@{
+    ViewBag.Title = "EspecialidadForm";
+}
+
+
+<hr style="border-width: 5px;" />
+<h3>Formulario Especialidad</h3>
+<hr style="border-width: 5px;" />
+
+@using (@Html.BeginForm("Save", "Especialidad"))
+{
+    <div class="form-group">
+        <h4>Nombre Especialidad</h4>
+        @Html.TextBoxFor(m => m.nombreEspecialidad, new { @class = "form-control" })
+    </div>
+
+    @Html.HiddenFor(m => m.idEspecialidad)
+    <button type="submit" class="btn btn-primary"> Guardar</button>
+
+}
+
+

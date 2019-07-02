@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="dbCitasMedicasModelStoreContainer" CdmEntityContainer="dbCitasMedicasEntities">
+    <EntitySetMapping Name="tblCentroMedicoes">
+      <EntityTypeMapping TypeName="dbCitasMedicasModel.tblCentroMedico">
+        <MappingFragment StoreEntitySet="tblCentroMedico">
+          <ScalarProperty Name="idCentroMedico" ColumnName="idCentroMedico" />
+          <ScalarProperty Name="nombreCentro" ColumnName="nombreCentro" />
+          <ScalarProperty Name="telefonoCentro" ColumnName="telefonoCentro" />
+          <ScalarProperty Name="direccionCentro" ColumnName="direccionCentro" />
+          <ScalarProperty Name="paginaWebCentro" ColumnName="paginaWebCentro" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblCitas">
+      <EntityTypeMapping TypeName="dbCitasMedicasModel.tblCita">
+        <MappingFragment StoreEntitySet="tblCita">
+          <ScalarProperty Name="idCita" ColumnName="idCita" />
+          <ScalarProperty Name="idDoctor" ColumnName="idDoctor" />
+          <ScalarProperty Name="idPaciente" ColumnName="idPaciente" />
+          <ScalarProperty Name="idCentroMedico" ColumnName="idCentroMedico" />
+          <ScalarProperty Name="idEstadoCita" ColumnName="idEstadoCita" />
+          <ScalarProperty Name="fechaCita" ColumnName="fechaCita" />
+          <ScalarProperty Name="horaCita" ColumnName="horaCita" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblDoctors">
+      <EntityTypeMapping TypeName="dbCitasMedicasModel.tblDoctor">
+        <MappingFragment StoreEntitySet="tblDoctor">
+          <ScalarProperty Name="idDoctor" ColumnName="idDoctor" />
+          <ScalarProperty Name="idEspecialidad" ColumnName="idEspecialidad" />
+          <ScalarProperty Name="nombreDoctor" ColumnName="nombreDoctor" />
+          <ScalarProperty Name="cedulaDoctor" ColumnName="cedulaDoctor" />
+          <ScalarProperty Name="fechaNacimientoDoctor" ColumnName="fechaNacimientoDoctor" />
+          <ScalarProperty Name="correoDoctor" ColumnName="correoDoctor" />
+          <ScalarProperty Name="telefonoDoctor" ColumnName="telefonoDoctor" />
+          <ScalarProperty Name="direccionDoctor" ColumnName="direccionDoctor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblEspecialidads">
+      <EntityTypeMapping TypeName="dbCitasMedicasModel.tblEspecialidad">
+        <MappingFragment StoreEntitySet="tblEspecialidad">
+          <ScalarProperty Name="idEspecialidad" ColumnName="idEspecialidad" />
+          <ScalarProperty Name="nombreEspecialidad" ColumnName="nombreEspecialidad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblEstadoCitas">
+      <EntityTypeMapping TypeName="dbCitasMedicasModel.tblEstadoCita">
+        <MappingFragment StoreEntitySet="tblEstadoCita">
+          <ScalarProperty Name="idEstado" ColumnName="idEstado" />
+          <ScalarProperty Name="nombreEstado" ColumnName="nombreEstado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblPacientes">
+      <EntityTypeMapping TypeName="dbCitasMedicasModel.tblPaciente">
+        <MappingFragment StoreEntitySet="tblPaciente">
+          <ScalarProperty Name="idPaciente" ColumnName="idPaciente" />
+          <ScalarProperty Name="idSeguro" ColumnName="idSeguro" />
+          <ScalarProperty Name="nombrePaciente" ColumnName="nombrePaciente" />
+          <ScalarProperty Name="cedulaPaciente" ColumnName="cedulaPaciente" />
+          <ScalarProperty Name="fechaNacimientoPaciente" ColumnName="fechaNacimientoPaciente" />
+          <ScalarProperty Name="correoPaciente" ColumnName="correoPaciente" />
+          <ScalarProperty Name="telefonoPaciente" ColumnName="telefonoPaciente" />
+          <ScalarProperty Name="direccionPaciente" ColumnName="direccionPaciente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblSeguroes">
+      <EntityTypeMapping TypeName="dbCitasMedicasModel.tblSeguro">
+        <MappingFragment StoreEntitySet="tblSeguro">
+          <ScalarProperty Name="idSeguro" ColumnName="idSeguro" />
+          <ScalarProperty Name="nombreSeguro" ColumnName="nombreSeguro" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

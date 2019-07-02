@@ -1,0 +1,39 @@
+﻿@model FinalCitasMedicas.tblDoctor
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+
+<hr style="border-width: 5px;" />
+<h3>Delete</h3>
+<hr style="border-width: 5px;" />
+
+
+<div>
+    <h4>Detalle Doctor </h4>
+
+    <div>
+        <p> Nombre : @Html.TextBoxFor(model => model.nombreDoctor)</p>
+        <p> Cedula : @Html.TextBoxFor(model => model.cedulaDoctor) </p>
+        <p> Correo : @Html.TextBoxFor(model => model.correoDoctor)</p>
+        <p> Telefono : @Html.TextBoxFor(model => model.telefonoDoctor)</p>
+        <p> Direccion : @Html.TextBoxFor(model => model.direccionDoctor)</p>
+
+    </div>
+    <hr style="border-width: 5px;" />
+
+    @Html.HiddenFor(m => m.idDoctor)
+
+    <h4>Estas seguro que quiere Eliminar este Doctor?</h4>
+
+    @using (@Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-actions danger">
+            <input type="submit" value="Eliminar" class="btn btn-danger" />
+            |
+            @Html.ActionLink("Regresar", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,55 @@
+﻿@model FinalCitasMedicas.ViewModel.DoctorViewModel
+
+@{
+    ViewBag.Title = "DoctorForm";
+}
+
+
+<hr style="border-width: 5px;" />
+<h3>Formulario Doctor</h3>
+<hr style="border-width: 5px;" />
+
+@using (@Html.BeginForm("Save", "Doctor"))
+{
+    <div class="form-group">
+        <h4>Nombre Doctor</h4>
+        @Html.TextBoxFor(m => m.doctor.nombreDoctor, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <h4>Cedula Doctor</h4>
+        @Html.TextBoxFor(m => m.doctor.cedulaDoctor, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <h4>Fecha Nacimiento Doctor</h4>
+        @Html.TextBoxFor(m => m.doctor.fechaNacimientoDoctor, new { @class = "form-control", type = "date" })
+    </div>
+
+    <div class="form-group">
+        <h4>Correo Doctor</h4>
+        @Html.TextBoxFor(m => m.doctor.correoDoctor, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <h4>Telefono Doctor</h4>
+        @Html.TextBoxFor(m => m.doctor.telefonoDoctor, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <h4>Direccion Doctor</h4>
+        @Html.TextBoxFor(m => m.doctor.direccionDoctor, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <h4>Especialidad</h4>
+        @Html.DropDownListFor(m => m.doctor.idEspecialidad, new SelectList(Model.listaEspecialidad, "idEspecialidad", "nombreEspecialidad"),
+                                                                "Seleccione Especialidad", new { @class = "form-control" })
+    </div>
+
+    @Html.HiddenFor(m => m.doctor.idDoctor)
+    <button type="submit" class="btn btn-primary"> Guardar</button>
+
+}
+
+

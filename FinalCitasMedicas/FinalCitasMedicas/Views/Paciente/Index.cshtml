@@ -1,0 +1,54 @@
+﻿@model IEnumerable<FinalCitasMedicas.ViewModel.PacienteViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<hr style="border-width: 5px;" />
+
+<h3>Pacientes Registrados</h3>
+
+@*@Html.ActionLink("Crear Paciente", "New", "Paciente")*@
+<button type="button" onclick="location.href='@Url.Action("New", "Paciente")'">
+    Nuevo Paciente
+</button>
+<hr style="border-width: 5px;" />
+
+<div class="table-responsive">
+    <table class="table table-bordered"
+           id="PacienteTable">
+        <thead>
+            <tr class="warning">
+                <th>Nombre</th>
+                <th>Telefono</th>
+                <th>Correo</th>
+                <th>Direccion</th>
+                <th>Seguro</th>
+                <th>Acciones</th>
+
+            </tr>
+            @{
+                foreach (var p in Model)
+                {
+                    <tr>
+                        <td style="padding:0 15px 0 15px;">@p.paciente.nombrePaciente</td>
+                        <td style="padding:0 15px 0 15px;">@p.paciente.telefonoPaciente</td>
+                        <td style="padding:0 15px 0 15px;">@p.paciente.correoPaciente</td>
+                        <td style="padding:0 15px 0 15px;">@p.paciente.direccionPaciente</td>
+                        <td style="padding:0 15px 0 15px;">@p.seguro.nombreSeguro</td>
+
+                        <td>
+                            @Html.ActionLink("| Editar", "Edit", "Paciente", new { id = p.paciente.idPaciente }, null)
+                            @Html.ActionLink("| Eliminar", "Delete", "Paciente", new { id = p.paciente.idPaciente }, null)
+
+                        </td>
+
+                    </tr>
+                }
+            }
+        </thead>
+    </table>
+</div>
+
+

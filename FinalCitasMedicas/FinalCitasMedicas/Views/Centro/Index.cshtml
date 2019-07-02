@@ -1,0 +1,46 @@
+﻿@model List<FinalCitasMedicas.tblCentroMedico>
+
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<hr style="border-width: 5px;" />
+<h3>Centros Registrados</h3>
+<button type="button" onclick="location.href='@Url.Action("New", "Centro")'">
+    Nuevo Centro
+</button>
+<hr style="border-width: 5px;" />
+
+<div class="table-responsive">
+    <table class="table table-bordered"
+           id="centrosTable">
+        <thead>
+            <tr class="warning">
+                <th>Nombre</th>
+                <th>Telefono</th>
+                <th>Direccion</th>
+                <th>Pagina Web</th>
+                <th>Acciones</th>
+
+            </tr>
+            @{
+                foreach (var p in Model)
+                {
+                    <tr>
+                        <td style="padding:0 15px 0 15px;">@p.nombreCentro</td>
+                        <td style="padding:0 15px 0 15px;">@p.telefonoCentro</td>
+                        <td style="padding:0 15px 0 15px;">@p.direccionCentro</td>
+                        <td style="padding:0 15px 0 15px;">@p.paginaWebCentro</td>
+                        <td>
+                        @Html.ActionLink("| Editar", "Edit", "Centro", new { id = p.idCentroMedico }, null)
+                        @Html.ActionLink("| Eliminar", "Delete", "Centro", new { id = p.idCentroMedico }, null)
+                        </td>
+                    </tr>
+                }
+            }
+        </thead>
+    </table>
+</div>
+

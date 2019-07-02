@@ -1,0 +1,45 @@
+﻿@model IEnumerable<FinalCitasMedicas.ViewModel.DoctorViewModel>
+
+@{
+    ViewBag.Title = "Doctores";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<hr style="border-width: 5px;" />
+<h3>Doctores Registrados</h3>
+<button type="button" onclick="location.href='@Url.Action("New", "Doctor")'">
+    Nuevo Doctor
+</button>
+<hr style="border-width: 5px;" />
+
+<div class="table-responsive">
+
+    <table class="table table-bordered"
+           id="DoctoresTable">
+        <thead>
+            <tr class="warning">
+                <th>Nombre</th>
+                <th>Telefono</th>
+                <th>Correo</th>
+                <th>Especialidad</th>
+                <th>Acciones</th>
+            </tr>
+            @{
+                foreach (var p in Model)
+                {
+            <tr>
+                <td style="padding:0 15px 0 15px;">@p.doctor.nombreDoctor</td>
+                <td style="padding:0 15px 0 15px;">@p.doctor.telefonoDoctor</td>
+                <td style="padding:0 15px 0 15px;">@p.doctor.correoDoctor</td>
+                <td style="padding:0 15px 0 15px;">@p.especialidad.nombreEspecialidad</td>
+                <td>
+                    @Html.ActionLink("| Editar", "Edit", "Doctor", new { id = p.doctor.idDoctor }, null)
+                    @Html.ActionLink("| Eliminar", "Delete", "Doctor", new { id = p.doctor.idDoctor }, null)
+
+                </td>
+            </tr>
+                }
+            }
+        </thead>
+    </table>
+</div>
+

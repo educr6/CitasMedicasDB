@@ -1,0 +1,478 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="dbCitasMedicasModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tblCentroMedico">
+          <Key>
+            <PropertyRef Name="idCentroMedico" />
+          </Key>
+          <Property Name="idCentroMedico" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombreCentro" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="telefonoCentro" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="direccionCentro" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="paginaWebCentro" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblCita">
+          <Key>
+            <PropertyRef Name="idCita" />
+          </Key>
+          <Property Name="idCita" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idDoctor" Type="int" Nullable="false" />
+          <Property Name="idPaciente" Type="int" Nullable="false" />
+          <Property Name="idCentroMedico" Type="int" Nullable="false" />
+          <Property Name="idEstadoCita" Type="int" Nullable="false" />
+          <Property Name="fechaCita" Type="date" Nullable="false" />
+          <Property Name="horaCita" Type="time" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblDoctor">
+          <Key>
+            <PropertyRef Name="idDoctor" />
+          </Key>
+          <Property Name="idDoctor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idEspecialidad" Type="int" Nullable="false" />
+          <Property Name="nombreDoctor" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="cedulaDoctor" Type="char" MaxLength="15" Nullable="false" />
+          <Property Name="fechaNacimientoDoctor" Type="date" />
+          <Property Name="correoDoctor" Type="varchar" MaxLength="30" />
+          <Property Name="telefonoDoctor" Type="varchar" MaxLength="15" />
+          <Property Name="direccionDoctor" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="tblEspecialidad">
+          <Key>
+            <PropertyRef Name="idEspecialidad" />
+          </Key>
+          <Property Name="idEspecialidad" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombreEspecialidad" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="tblEstadoCita">
+          <Key>
+            <PropertyRef Name="idEstado" />
+          </Key>
+          <Property Name="idEstado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombreEstado" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="tblPaciente">
+          <Key>
+            <PropertyRef Name="idPaciente" />
+          </Key>
+          <Property Name="idPaciente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idSeguro" Type="int" Nullable="false" />
+          <Property Name="nombrePaciente" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="cedulaPaciente" Type="char" MaxLength="15" Nullable="false" />
+          <Property Name="fechaNacimientoPaciente" Type="date" />
+          <Property Name="correoPaciente" Type="varchar" MaxLength="30" />
+          <Property Name="telefonoPaciente" Type="varchar" MaxLength="15" />
+          <Property Name="direccionPaciente" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="tblSeguro">
+          <Key>
+            <PropertyRef Name="idSeguro" />
+          </Key>
+          <Property Name="idSeguro" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombreSeguro" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <Association Name="FK_CentroMedicoCita">
+          <End Role="tblCentroMedico" Type="Self.tblCentroMedico" Multiplicity="1" />
+          <End Role="tblCita" Type="Self.tblCita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCentroMedico">
+              <PropertyRef Name="idCentroMedico" />
+            </Principal>
+            <Dependent Role="tblCita">
+              <PropertyRef Name="idCentroMedico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DoctorCita">
+          <End Role="tblDoctor" Type="Self.tblDoctor" Multiplicity="1" />
+          <End Role="tblCita" Type="Self.tblCita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblDoctor">
+              <PropertyRef Name="idDoctor" />
+            </Principal>
+            <Dependent Role="tblCita">
+              <PropertyRef Name="idDoctor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EspecialidadDoctor">
+          <End Role="tblEspecialidad" Type="Self.tblEspecialidad" Multiplicity="1" />
+          <End Role="tblDoctor" Type="Self.tblDoctor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEspecialidad">
+              <PropertyRef Name="idEspecialidad" />
+            </Principal>
+            <Dependent Role="tblDoctor">
+              <PropertyRef Name="idEspecialidad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EstadoC_Cita">
+          <End Role="tblEstadoCita" Type="Self.tblEstadoCita" Multiplicity="1" />
+          <End Role="tblCita" Type="Self.tblCita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEstadoCita">
+              <PropertyRef Name="idEstado" />
+            </Principal>
+            <Dependent Role="tblCita">
+              <PropertyRef Name="idEstadoCita" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PacienteCita">
+          <End Role="tblPaciente" Type="Self.tblPaciente" Multiplicity="1" />
+          <End Role="tblCita" Type="Self.tblCita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPaciente">
+              <PropertyRef Name="idPaciente" />
+            </Principal>
+            <Dependent Role="tblCita">
+              <PropertyRef Name="idPaciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SeguroPaciente">
+          <End Role="tblSeguro" Type="Self.tblSeguro" Multiplicity="1" />
+          <End Role="tblPaciente" Type="Self.tblPaciente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSeguro">
+              <PropertyRef Name="idSeguro" />
+            </Principal>
+            <Dependent Role="tblPaciente">
+              <PropertyRef Name="idSeguro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="dbCitasMedicasModelStoreContainer">
+          <EntitySet Name="tblCentroMedico" EntityType="Self.tblCentroMedico" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCita" EntityType="Self.tblCita" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblDoctor" EntityType="Self.tblDoctor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblEspecialidad" EntityType="Self.tblEspecialidad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblEstadoCita" EntityType="Self.tblEstadoCita" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblPaciente" EntityType="Self.tblPaciente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblSeguro" EntityType="Self.tblSeguro" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CentroMedicoCita" Association="Self.FK_CentroMedicoCita">
+            <End Role="tblCentroMedico" EntitySet="tblCentroMedico" />
+            <End Role="tblCita" EntitySet="tblCita" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DoctorCita" Association="Self.FK_DoctorCita">
+            <End Role="tblDoctor" EntitySet="tblDoctor" />
+            <End Role="tblCita" EntitySet="tblCita" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EspecialidadDoctor" Association="Self.FK_EspecialidadDoctor">
+            <End Role="tblEspecialidad" EntitySet="tblEspecialidad" />
+            <End Role="tblDoctor" EntitySet="tblDoctor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EstadoC_Cita" Association="Self.FK_EstadoC_Cita">
+            <End Role="tblEstadoCita" EntitySet="tblEstadoCita" />
+            <End Role="tblCita" EntitySet="tblCita" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PacienteCita" Association="Self.FK_PacienteCita">
+            <End Role="tblPaciente" EntitySet="tblPaciente" />
+            <End Role="tblCita" EntitySet="tblCita" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SeguroPaciente" Association="Self.FK_SeguroPaciente">
+            <End Role="tblSeguro" EntitySet="tblSeguro" />
+            <End Role="tblPaciente" EntitySet="tblPaciente" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="dbCitasMedicasModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tblCentroMedico">
+          <Key>
+            <PropertyRef Name="idCentroMedico" />
+          </Key>
+          <Property Name="idCentroMedico" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombreCentro" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="telefonoCentro" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="direccionCentro" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="paginaWebCentro" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblCitas" Relationship="Self.FK_CentroMedicoCita" FromRole="tblCentroMedico" ToRole="tblCita" />
+        </EntityType>
+        <EntityType Name="tblCita">
+          <Key>
+            <PropertyRef Name="idCita" />
+          </Key>
+          <Property Name="idCita" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idDoctor" Type="Int32" Nullable="false" />
+          <Property Name="idPaciente" Type="Int32" Nullable="false" />
+          <Property Name="idCentroMedico" Type="Int32" Nullable="false" />
+          <Property Name="idEstadoCita" Type="Int32" Nullable="false" />
+          <Property Name="fechaCita" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="horaCita" Type="Time" Nullable="false" Precision="7" />
+          <NavigationProperty Name="tblCentroMedico" Relationship="Self.FK_CentroMedicoCita" FromRole="tblCita" ToRole="tblCentroMedico" />
+          <NavigationProperty Name="tblDoctor" Relationship="Self.FK_DoctorCita" FromRole="tblCita" ToRole="tblDoctor" />
+          <NavigationProperty Name="tblEstadoCita" Relationship="Self.FK_EstadoC_Cita" FromRole="tblCita" ToRole="tblEstadoCita" />
+          <NavigationProperty Name="tblPaciente" Relationship="Self.FK_PacienteCita" FromRole="tblCita" ToRole="tblPaciente" />
+        </EntityType>
+        <EntityType Name="tblDoctor">
+          <Key>
+            <PropertyRef Name="idDoctor" />
+          </Key>
+          <Property Name="idDoctor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idEspecialidad" Type="Int32" Nullable="false" />
+          <Property Name="nombreDoctor" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cedulaDoctor" Type="String" MaxLength="15" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="fechaNacimientoDoctor" Type="DateTime" Precision="0" />
+          <Property Name="correoDoctor" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="telefonoDoctor" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="direccionDoctor" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblCitas" Relationship="Self.FK_DoctorCita" FromRole="tblDoctor" ToRole="tblCita" />
+          <NavigationProperty Name="tblEspecialidad" Relationship="Self.FK_EspecialidadDoctor" FromRole="tblDoctor" ToRole="tblEspecialidad" />
+        </EntityType>
+        <EntityType Name="tblEspecialidad">
+          <Key>
+            <PropertyRef Name="idEspecialidad" />
+          </Key>
+          <Property Name="idEspecialidad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombreEspecialidad" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblDoctors" Relationship="Self.FK_EspecialidadDoctor" FromRole="tblEspecialidad" ToRole="tblDoctor" />
+        </EntityType>
+        <EntityType Name="tblEstadoCita">
+          <Key>
+            <PropertyRef Name="idEstado" />
+          </Key>
+          <Property Name="idEstado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombreEstado" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblCitas" Relationship="Self.FK_EstadoC_Cita" FromRole="tblEstadoCita" ToRole="tblCita" />
+        </EntityType>
+        <EntityType Name="tblPaciente">
+          <Key>
+            <PropertyRef Name="idPaciente" />
+          </Key>
+          <Property Name="idPaciente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idSeguro" Type="Int32" Nullable="false" />
+          <Property Name="nombrePaciente" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cedulaPaciente" Type="String" MaxLength="15" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="fechaNacimientoPaciente" Type="DateTime" Precision="0" />
+          <Property Name="correoPaciente" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="telefonoPaciente" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="direccionPaciente" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblCitas" Relationship="Self.FK_PacienteCita" FromRole="tblPaciente" ToRole="tblCita" />
+          <NavigationProperty Name="tblSeguro" Relationship="Self.FK_SeguroPaciente" FromRole="tblPaciente" ToRole="tblSeguro" />
+        </EntityType>
+        <EntityType Name="tblSeguro">
+          <Key>
+            <PropertyRef Name="idSeguro" />
+          </Key>
+          <Property Name="idSeguro" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombreSeguro" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblPacientes" Relationship="Self.FK_SeguroPaciente" FromRole="tblSeguro" ToRole="tblPaciente" />
+        </EntityType>
+        <Association Name="FK_CentroMedicoCita">
+          <End Role="tblCentroMedico" Type="Self.tblCentroMedico" Multiplicity="1" />
+          <End Role="tblCita" Type="Self.tblCita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCentroMedico">
+              <PropertyRef Name="idCentroMedico" />
+            </Principal>
+            <Dependent Role="tblCita">
+              <PropertyRef Name="idCentroMedico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DoctorCita">
+          <End Role="tblDoctor" Type="Self.tblDoctor" Multiplicity="1" />
+          <End Role="tblCita" Type="Self.tblCita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblDoctor">
+              <PropertyRef Name="idDoctor" />
+            </Principal>
+            <Dependent Role="tblCita">
+              <PropertyRef Name="idDoctor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EstadoC_Cita">
+          <End Role="tblEstadoCita" Type="Self.tblEstadoCita" Multiplicity="1" />
+          <End Role="tblCita" Type="Self.tblCita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEstadoCita">
+              <PropertyRef Name="idEstado" />
+            </Principal>
+            <Dependent Role="tblCita">
+              <PropertyRef Name="idEstadoCita" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PacienteCita">
+          <End Role="tblPaciente" Type="Self.tblPaciente" Multiplicity="1" />
+          <End Role="tblCita" Type="Self.tblCita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPaciente">
+              <PropertyRef Name="idPaciente" />
+            </Principal>
+            <Dependent Role="tblCita">
+              <PropertyRef Name="idPaciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EspecialidadDoctor">
+          <End Role="tblEspecialidad" Type="Self.tblEspecialidad" Multiplicity="1" />
+          <End Role="tblDoctor" Type="Self.tblDoctor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEspecialidad">
+              <PropertyRef Name="idEspecialidad" />
+            </Principal>
+            <Dependent Role="tblDoctor">
+              <PropertyRef Name="idEspecialidad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SeguroPaciente">
+          <End Role="tblSeguro" Type="Self.tblSeguro" Multiplicity="1" />
+          <End Role="tblPaciente" Type="Self.tblPaciente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSeguro">
+              <PropertyRef Name="idSeguro" />
+            </Principal>
+            <Dependent Role="tblPaciente">
+              <PropertyRef Name="idSeguro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="dbCitasMedicasEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblCentroMedicoes" EntityType="Self.tblCentroMedico" />
+          <EntitySet Name="tblCitas" EntityType="Self.tblCita" />
+          <EntitySet Name="tblDoctors" EntityType="Self.tblDoctor" />
+          <EntitySet Name="tblEspecialidads" EntityType="Self.tblEspecialidad" />
+          <EntitySet Name="tblEstadoCitas" EntityType="Self.tblEstadoCita" />
+          <EntitySet Name="tblPacientes" EntityType="Self.tblPaciente" />
+          <EntitySet Name="tblSeguroes" EntityType="Self.tblSeguro" />
+          <AssociationSet Name="FK_CentroMedicoCita" Association="Self.FK_CentroMedicoCita">
+            <End Role="tblCentroMedico" EntitySet="tblCentroMedicoes" />
+            <End Role="tblCita" EntitySet="tblCitas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DoctorCita" Association="Self.FK_DoctorCita">
+            <End Role="tblDoctor" EntitySet="tblDoctors" />
+            <End Role="tblCita" EntitySet="tblCitas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EstadoC_Cita" Association="Self.FK_EstadoC_Cita">
+            <End Role="tblEstadoCita" EntitySet="tblEstadoCitas" />
+            <End Role="tblCita" EntitySet="tblCitas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PacienteCita" Association="Self.FK_PacienteCita">
+            <End Role="tblPaciente" EntitySet="tblPacientes" />
+            <End Role="tblCita" EntitySet="tblCitas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EspecialidadDoctor" Association="Self.FK_EspecialidadDoctor">
+            <End Role="tblEspecialidad" EntitySet="tblEspecialidads" />
+            <End Role="tblDoctor" EntitySet="tblDoctors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SeguroPaciente" Association="Self.FK_SeguroPaciente">
+            <End Role="tblSeguro" EntitySet="tblSeguroes" />
+            <End Role="tblPaciente" EntitySet="tblPacientes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="dbCitasMedicasModelStoreContainer" CdmEntityContainer="dbCitasMedicasEntities">
+          <EntitySetMapping Name="tblCentroMedicoes">
+            <EntityTypeMapping TypeName="dbCitasMedicasModel.tblCentroMedico">
+              <MappingFragment StoreEntitySet="tblCentroMedico">
+                <ScalarProperty Name="idCentroMedico" ColumnName="idCentroMedico" />
+                <ScalarProperty Name="nombreCentro" ColumnName="nombreCentro" />
+                <ScalarProperty Name="telefonoCentro" ColumnName="telefonoCentro" />
+                <ScalarProperty Name="direccionCentro" ColumnName="direccionCentro" />
+                <ScalarProperty Name="paginaWebCentro" ColumnName="paginaWebCentro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCitas">
+            <EntityTypeMapping TypeName="dbCitasMedicasModel.tblCita">
+              <MappingFragment StoreEntitySet="tblCita">
+                <ScalarProperty Name="idCita" ColumnName="idCita" />
+                <ScalarProperty Name="idDoctor" ColumnName="idDoctor" />
+                <ScalarProperty Name="idPaciente" ColumnName="idPaciente" />
+                <ScalarProperty Name="idCentroMedico" ColumnName="idCentroMedico" />
+                <ScalarProperty Name="idEstadoCita" ColumnName="idEstadoCita" />
+                <ScalarProperty Name="fechaCita" ColumnName="fechaCita" />
+                <ScalarProperty Name="horaCita" ColumnName="horaCita" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblDoctors">
+            <EntityTypeMapping TypeName="dbCitasMedicasModel.tblDoctor">
+              <MappingFragment StoreEntitySet="tblDoctor">
+                <ScalarProperty Name="idDoctor" ColumnName="idDoctor" />
+                <ScalarProperty Name="idEspecialidad" ColumnName="idEspecialidad" />
+                <ScalarProperty Name="nombreDoctor" ColumnName="nombreDoctor" />
+                <ScalarProperty Name="cedulaDoctor" ColumnName="cedulaDoctor" />
+                <ScalarProperty Name="fechaNacimientoDoctor" ColumnName="fechaNacimientoDoctor" />
+                <ScalarProperty Name="correoDoctor" ColumnName="correoDoctor" />
+                <ScalarProperty Name="telefonoDoctor" ColumnName="telefonoDoctor" />
+                <ScalarProperty Name="direccionDoctor" ColumnName="direccionDoctor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblEspecialidads">
+            <EntityTypeMapping TypeName="dbCitasMedicasModel.tblEspecialidad">
+              <MappingFragment StoreEntitySet="tblEspecialidad">
+                <ScalarProperty Name="idEspecialidad" ColumnName="idEspecialidad" />
+                <ScalarProperty Name="nombreEspecialidad" ColumnName="nombreEspecialidad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblEstadoCitas">
+            <EntityTypeMapping TypeName="dbCitasMedicasModel.tblEstadoCita">
+              <MappingFragment StoreEntitySet="tblEstadoCita">
+                <ScalarProperty Name="idEstado" ColumnName="idEstado" />
+                <ScalarProperty Name="nombreEstado" ColumnName="nombreEstado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPacientes">
+            <EntityTypeMapping TypeName="dbCitasMedicasModel.tblPaciente">
+              <MappingFragment StoreEntitySet="tblPaciente">
+                <ScalarProperty Name="idPaciente" ColumnName="idPaciente" />
+                <ScalarProperty Name="idSeguro" ColumnName="idSeguro" />
+                <ScalarProperty Name="nombrePaciente" ColumnName="nombrePaciente" />
+                <ScalarProperty Name="cedulaPaciente" ColumnName="cedulaPaciente" />
+                <ScalarProperty Name="fechaNacimientoPaciente" ColumnName="fechaNacimientoPaciente" />
+                <ScalarProperty Name="correoPaciente" ColumnName="correoPaciente" />
+                <ScalarProperty Name="telefonoPaciente" ColumnName="telefonoPaciente" />
+                <ScalarProperty Name="direccionPaciente" ColumnName="direccionPaciente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSeguroes">
+            <EntityTypeMapping TypeName="dbCitasMedicasModel.tblSeguro">
+              <MappingFragment StoreEntitySet="tblSeguro">
+                <ScalarProperty Name="idSeguro" ColumnName="idSeguro" />
+                <ScalarProperty Name="nombreSeguro" ColumnName="nombreSeguro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

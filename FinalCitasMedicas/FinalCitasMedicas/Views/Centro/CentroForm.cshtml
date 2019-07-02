@@ -1,0 +1,39 @@
+﻿@model FinalCitasMedicas.tblCentroMedico
+
+@{
+    ViewBag.Title = "CentroForm";
+}
+
+
+<hr style="border-width: 5px;" />
+<h3>Formulario Centro Medico</h3>
+<hr style="border-width: 5px;" />
+
+@using (@Html.BeginForm("Save", "Centro"))
+{
+    <div class="form-group">
+        <h4>Nombre Centro</h4>
+        @Html.TextBoxFor(m => m.nombreCentro, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <h4>Telefono Centro</h4>
+        @Html.TextBoxFor(m => m.telefonoCentro, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <h4>Direccion Centro</h4>
+        @Html.TextBoxFor(m => m.direccionCentro, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <h4>Pagina Web Centro</h4>
+        @Html.TextBoxFor(m => m.paginaWebCentro, new { @class = "form-control" })
+    </div>
+
+    @Html.HiddenFor(m => m.idCentroMedico)
+    <button type="submit" class="btn btn-primary"> Guardar</button>
+
+}
+
+
