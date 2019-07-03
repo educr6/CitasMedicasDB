@@ -8,6 +8,11 @@
 
 <hr style="border-width: 5px;" />
 <h3>Especialidades Registradas</h3>
+<div>
+    <img src="~/Imagen/cardiology.png" style="height:100px;width:100px;" />
+</div>
+<h3>   </h3>
+
 <button type="button" onclick="location.href='@Url.Action("New", "Especialidad")'">
     Nueva Especialidad
 </button>
@@ -28,8 +33,8 @@
                     <tr>
                         <td style="padding:0 15px 0 15px;">@p.nombreEspecialidad</td>
                         <td>
-                        @Html.ActionLink("| Editar", "Edit", "Especialidad", new { id = p.idEspecialidad }, null)
-                        @Html.ActionLink("| Eliminar", "Delete", "Especialidad", new { id = p.idEspecialidad }, null)
+                            @Html.ActionLink("| Editar", "Edit", "Especialidad", new { id = p.idEspecialidad }, null)
+                            @Html.ActionLink("| Eliminar", "Delete", "Especialidad", new { id = p.idEspecialidad }, null)
                         </td>
                     </tr>
                 }

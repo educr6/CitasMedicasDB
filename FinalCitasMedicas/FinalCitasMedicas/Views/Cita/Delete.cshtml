@@ -1,4 +1,4 @@
-﻿@model FinalCitasMedicas.tblDoctor
+﻿@model FinalCitasMedicas.ViewModel.CitaViewModel
 
 @{
     ViewBag.Title = "Delete";
@@ -11,22 +11,22 @@
 
 
 <div>
-    <h3>Detalle Doctor </h3>
+    <h3>Detalle Cita </h3>
+
 
     <div class="container-fluid">
-        <h4> Nombre : @Model.nombreDoctor</h4>
-        <h4> Cedula : @Model.cedulaDoctor </h4>
-        <h4> Correo : @Model.correoDoctor </h4>
-        <h4> Telefono : @Model.telefonoDoctor</h4>
-        <h4> Direccion : @Model.direccionDoctor </h4>
+        <h4> Paciente : @Model.miPaciente.nombrePaciente</h4>
+        <h4> Doctor : @Model.miDoctor.nombreDoctor </h4>
+        <h4> Centro Medico : @Model.miCentro.nombreCentro </h4>
+        <h4> Fecha : @Model.miCita.fechaCita.Date.ToString("dddd dd MMMM yyyy")</h4>
+        <h4> Hora : @Model.miCita.horaCita </h4>
 
     </div>
-
     <hr style="border-width: 5px;" />
 
-    @Html.HiddenFor(m => m.idDoctor)
+    @Html.HiddenFor(m => m.miCita.idCita)
 
-    <h4>Estas seguro que quiere Eliminar este Doctor?</h4>
+    <h4>Estas seguro que quiere Eliminar esta Cita?</h4>
 
     @using (@Html.BeginForm())
     {

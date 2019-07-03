@@ -10,7 +10,7 @@ namespace FinalCitasMedicas.Controllers
 {
     public class PacienteController : Controller
     {
-        dbCitasMedicasEntities db = new dbCitasMedicasEntities();
+        protected dbCitasMedicasEntities db = new dbCitasMedicasEntities();
         // GET: Paciente
         public ActionResult Index()
         {

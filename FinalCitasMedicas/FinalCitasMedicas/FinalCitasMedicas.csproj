@@ -144,6 +144,7 @@
       <DependentUpon>ConexionDB.edmx</DependentUpon>
     </Compile>
     <Compile Include="Controllers\CentroController.cs" />
+    <Compile Include="Controllers\CitaController.cs" />
     <Compile Include="Controllers\DoctorController.cs" />
     <Compile Include="Controllers\EspecialidadController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -173,6 +174,7 @@
     <Compile Include="tblSeguro.cs">
       <DependentUpon>ConexionDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\CitaViewModel.cs" />
     <Compile Include="ViewModel\DoctorViewModel.cs" />
     <Compile Include="ViewModel\PacienteViewModel.cs" />
   </ItemGroup>
@@ -196,6 +198,13 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Imagen\cardiology.png" />
+    <Content Include="Imagen\doctor.png" />
+    <Content Include="Imagen\hospital.png" />
+    <Content Include="Imagen\Logo.JPG" />
+    <Content Include="Imagen\man.png" />
+    <Content Include="Imagen\medical-result.png" />
+    <Content Include="Imagen\report.png" />
     <Content Include="Scripts\bootstrap-sortable.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -247,6 +256,9 @@
     <Content Include="Views\Centro\Delete.cshtml" />
     <Content Include="Views\Especialidad\EspecialidadForm.cshtml" />
     <Content Include="Views\Especialidad\Delete.cshtml" />
+    <Content Include="Views\Cita\Index.cshtml" />
+    <Content Include="Views\Cita\CitaForm.cshtml" />
+    <Content Include="Views\Cita\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

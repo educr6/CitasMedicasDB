@@ -4,8 +4,8 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="7a735be751eb402cb32c0dca84e82d06" Name="Diagram1" ZoomLevel="47">
-        <EntityTypeShape EntityType="dbCitasMedicasModel.tblCentroMedico" Width="1.5" PointX="8.25" PointY="2.125" IsExpanded="true" />
+      <Diagram DiagramId="7a735be751eb402cb32c0dca84e82d06" Name="Diagram1" ZoomLevel="81">
+        <EntityTypeShape EntityType="dbCitasMedicasModel.tblCentroMedico" Width="2.25" PointX="8.25" PointY="2.125" IsExpanded="true" />
         <EntityTypeShape EntityType="dbCitasMedicasModel.tblCita" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="dbCitasMedicasModel.tblDoctor" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="dbCitasMedicasModel.tblEspecialidad" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />

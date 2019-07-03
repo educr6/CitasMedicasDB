@@ -1,0 +1,53 @@
+﻿@model FinalCitasMedicas.ViewModel.CitaViewModel
+
+@{
+    ViewBag.Title = "CitaForm";
+}
+
+
+<hr style="border-width: 5px;" />
+<h3>Formulario Cita</h3>
+<hr style="border-width: 5px;" />
+
+@using (@Html.BeginForm("Save", "Cita"))
+{
+    <div class="form-group">
+        <h4>Paciente</h4>
+        @Html.DropDownListFor(m => m.miCita.idPaciente, new SelectList(Model.listaPacientes, "idPaciente", "nombrePaciente"),
+                                                                "Seleccione Paciente", new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <h4>Doctor</h4>
+        @Html.DropDownListFor(m => m.miCita.idDoctor, new SelectList(Model.listaDoctores, "idDoctor", "nombreDoctor"),
+                                                                "Seleccione Doctor", new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <h4>Centro Medico</h4>
+        @Html.DropDownListFor(m => m.miCita.idCentroMedico, new SelectList(Model.listaCentrosMedicos, "idCentroMedico", "nombreCentro"),
+                                                                "Seleccione Centro", new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <h4>Estado</h4>
+        @Html.DropDownListFor(m => m.miCita.idEstadoCita, new SelectList(Model.listaEstados, "idEstado", "nombreEstado"),
+                                                                "Seleccione Estado", new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <h4>Dia de Cita</h4>
+        @Html.TextBoxFor(m => m.miCita.fechaCita, new { @class = "form-control", type = "date" })
+    </div>
+
+    <div class="form-group">
+        <h4>Hora de Cita</h4>
+        @Html.TextBoxFor(m => m.miCita.horaCita , new { @class = "form-control", type = "time" })
+    </div>
+
+    @Html.HiddenFor(m => m.miCita.idCita)
+    <button type="submit" class="btn btn-primary"> Guardar</button>
+
+}
+
+

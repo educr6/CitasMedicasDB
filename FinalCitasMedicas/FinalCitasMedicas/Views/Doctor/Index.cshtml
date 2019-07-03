@@ -6,6 +6,12 @@
 }
 <hr style="border-width: 5px;" />
 <h3>Doctores Registrados</h3>
+<div>
+    <img src="~/Imagen/doctor.png" style="height:100px;width:100px;" />
+</div>
+
+<h3>   </h3>
+
 <button type="button" onclick="location.href='@Url.Action("New", "Doctor")'">
     Nuevo Doctor
 </button>
@@ -26,17 +32,17 @@
             @{
                 foreach (var p in Model)
                 {
-            <tr>
-                <td style="padding:0 15px 0 15px;">@p.doctor.nombreDoctor</td>
-                <td style="padding:0 15px 0 15px;">@p.doctor.telefonoDoctor</td>
-                <td style="padding:0 15px 0 15px;">@p.doctor.correoDoctor</td>
-                <td style="padding:0 15px 0 15px;">@p.especialidad.nombreEspecialidad</td>
-                <td>
-                    @Html.ActionLink("| Editar", "Edit", "Doctor", new { id = p.doctor.idDoctor }, null)
-                    @Html.ActionLink("| Eliminar", "Delete", "Doctor", new { id = p.doctor.idDoctor }, null)
+                    <tr>
+                        <td style="padding:0 15px 0 15px;">@p.doctor.nombreDoctor</td>
+                        <td style="padding:0 15px 0 15px;">@p.doctor.telefonoDoctor</td>
+                        <td style="padding:0 15px 0 15px;">@p.doctor.correoDoctor</td>
+                        <td style="padding:0 15px 0 15px;">@p.especialidad.nombreEspecialidad</td>
+                        <td>
+                            @Html.ActionLink("| Editar", "Edit", "Doctor", new { id = p.doctor.idDoctor }, null)
+                            @Html.ActionLink("| Eliminar", "Delete", "Doctor", new { id = p.doctor.idDoctor }, null)
 
-                </td>
-            </tr>
+                        </td>
+                    </tr>
                 }
             }
         </thead>

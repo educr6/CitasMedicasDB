@@ -8,6 +8,11 @@
 
 <hr style="border-width: 5px;" />
 <h3>Centros Registrados</h3>
+<div>
+    <img src="~/Imagen/hospital.png" style="height:100px;width:100px;" />
+</div>
+<h3>   </h3>
+
 <button type="button" onclick="location.href='@Url.Action("New", "Centro")'">
     Nuevo Centro
 </button>
@@ -34,8 +39,8 @@
                         <td style="padding:0 15px 0 15px;">@p.direccionCentro</td>
                         <td style="padding:0 15px 0 15px;">@p.paginaWebCentro</td>
                         <td>
-                        @Html.ActionLink("| Editar", "Edit", "Centro", new { id = p.idCentroMedico }, null)
-                        @Html.ActionLink("| Eliminar", "Delete", "Centro", new { id = p.idCentroMedico }, null)
+                            @Html.ActionLink("| Editar", "Edit", "Centro", new { id = p.idCentroMedico }, null)
+                            @Html.ActionLink("| Eliminar", "Delete", "Centro", new { id = p.idCentroMedico }, null)
                         </td>
                     </tr>
                 }

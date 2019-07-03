@@ -11,15 +11,16 @@
 
 
 <div>
-    <h4>Detalle Centro Medico </h4>
+    <h3>Detalle Centro Medico </h3>
 
-    <div>
-        <p> Nombre : @Html.TextBoxFor(model => model.nombreCentro)</p>
-        <p> Telefono : @Html.TextBoxFor(model => model.telefonoCentro)</p>
-        <p> Direccion : @Html.TextBoxFor(model => model.direccionCentro)</p>
-        <p> Pagina Web : @Html.TextBoxFor(model => model.paginaWebCentro)</p>
+    <div class="container-fluid">
+        <h4> Nombre : @Model.nombreCentro</h4>
+        <h4> Cedula : @Model.telefonoCentro </h4>
+        <h4> Correo : @Model.direccionCentro </h4>
+        <h4> Telefono : @Model.paginaWebCentro</h4>
 
     </div>
+
     <hr style="border-width: 5px;" />
 
     @Html.HiddenFor(m => m.idCentroMedico)

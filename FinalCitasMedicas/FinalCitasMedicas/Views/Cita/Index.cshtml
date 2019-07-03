@@ -1,0 +1,56 @@
+﻿@model IEnumerable <FinalCitasMedicas.ViewModel.CitaViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<hr style="border-width: 5px;" />
+<h3>Citas Registradas</h3>
+<div>
+    <img src="~/Imagen/medical-result.png" style="height:100px;width:100px;" />
+</div>
+<h3>   </h3>
+<button type="button" onclick="location.href='@Url.Action("New", "Cita")'">
+    Nueva Cita
+</button>
+<hr style="border-width: 5px;" />
+
+<div class="table-responsive">
+
+    <table class="table table-bordered"
+           id="CitaTable">
+        <thead>
+            <tr class="warning">
+                <th>Paciente</th>
+                <th>Doctor</th>
+                <th>Centro Medico</th>
+                <th>Estado</th>
+                <th>Fecha</th>
+                <th>Hora</th>
+                <th>Acciones</th>
+            </tr>
+            @{
+                foreach (var p in Model)
+                {
+                    <tr>
+                        <td style="padding:0 15px 0 15px;">@p.miPaciente.nombrePaciente</td>
+                        <td style="padding:0 15px 0 15px;">@p.miDoctor.nombreDoctor</td>
+                        <td style="padding:0 15px 0 15px;">@p.miCentro.nombreCentro</td>
+                        <td style="padding:0 15px 0 15px;">@p.miEstado.nombreEstado</td>
+                        <td style="padding:0 15px 0 15px;">@p.miCita.fechaCita.Date.ToString("dd MMM yyyy")</td>
+                        <td style="padding:0 15px 0 15px;">@p.miCita.horaCita</td>
+
+                        <td>
+                            @Html.ActionLink("| Editar", "Edit", "Cita", new { id = p.miCita.idCita }, null)
+                            @Html.ActionLink("| Eliminar", "Delete", "Cita", new { id = p.miCita.idCita }, null)
+
+                        </td>
+                    </tr>
+                }
+            }
+        </thead>
+    </table>
+</div>
+
+
