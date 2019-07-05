@@ -1,0 +1,189 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dbCitasMedicasModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="tblCentroMedico">
+    <Key>
+      <PropertyRef Name="idCentroMedico" />
+    </Key>
+    <Property Name="idCentroMedico" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombreCentro" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="telefonoCentro" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="direccionCentro" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="paginaWebCentro" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tblCitas" Relationship="Self.FK_CentroMedicoCita" FromRole="tblCentroMedico" ToRole="tblCita" />
+  </EntityType>
+  <EntityType Name="tblCita">
+    <Key>
+      <PropertyRef Name="idCita" />
+    </Key>
+    <Property Name="idCita" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idDoctor" Type="Int32" Nullable="false" />
+    <Property Name="idPaciente" Type="Int32" Nullable="false" />
+    <Property Name="idCentroMedico" Type="Int32" Nullable="false" />
+    <Property Name="idEstadoCita" Type="Int32" Nullable="false" />
+    <Property Name="fechaCita" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="horaCita" Type="Time" Nullable="false" Precision="7" />
+    <NavigationProperty Name="tblCentroMedico" Relationship="Self.FK_CentroMedicoCita" FromRole="tblCita" ToRole="tblCentroMedico" />
+    <NavigationProperty Name="tblDoctor" Relationship="Self.FK_DoctorCita" FromRole="tblCita" ToRole="tblDoctor" />
+    <NavigationProperty Name="tblEstadoCita" Relationship="Self.FK_EstadoC_Cita" FromRole="tblCita" ToRole="tblEstadoCita" />
+    <NavigationProperty Name="tblPaciente" Relationship="Self.FK_PacienteCita" FromRole="tblCita" ToRole="tblPaciente" />
+  </EntityType>
+  <EntityType Name="tblDoctor">
+    <Key>
+      <PropertyRef Name="idDoctor" />
+    </Key>
+    <Property Name="idDoctor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idEspecialidad" Type="Int32" Nullable="false" />
+    <Property Name="nombreDoctor" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="cedulaDoctor" Type="String" MaxLength="15" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="fechaNacimientoDoctor" Type="DateTime" Precision="0" />
+    <Property Name="correoDoctor" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="telefonoDoctor" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="direccionDoctor" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tblCitas" Relationship="Self.FK_DoctorCita" FromRole="tblDoctor" ToRole="tblCita" />
+    <NavigationProperty Name="tblEspecialidad" Relationship="Self.FK_EspecialidadDoctor" FromRole="tblDoctor" ToRole="tblEspecialidad" />
+  </EntityType>
+  <EntityType Name="tblEspecialidad">
+    <Key>
+      <PropertyRef Name="idEspecialidad" />
+    </Key>
+    <Property Name="idEspecialidad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombreEspecialidad" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tblDoctors" Relationship="Self.FK_EspecialidadDoctor" FromRole="tblEspecialidad" ToRole="tblDoctor" />
+  </EntityType>
+  <EntityType Name="tblEstadoCita">
+    <Key>
+      <PropertyRef Name="idEstado" />
+    </Key>
+    <Property Name="idEstado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombreEstado" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tblCitas" Relationship="Self.FK_EstadoC_Cita" FromRole="tblEstadoCita" ToRole="tblCita" />
+  </EntityType>
+  <EntityType Name="tblPaciente">
+    <Key>
+      <PropertyRef Name="idPaciente" />
+    </Key>
+    <Property Name="idPaciente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idSeguro" Type="Int32" Nullable="false" />
+    <Property Name="nombrePaciente" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="cedulaPaciente" Type="String" MaxLength="15" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="fechaNacimientoPaciente" Type="DateTime" Precision="0" />
+    <Property Name="correoPaciente" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="telefonoPaciente" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="direccionPaciente" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tblCitas" Relationship="Self.FK_PacienteCita" FromRole="tblPaciente" ToRole="tblCita" />
+    <NavigationProperty Name="tblSeguro" Relationship="Self.FK_SeguroPaciente" FromRole="tblPaciente" ToRole="tblSeguro" />
+  </EntityType>
+  <EntityType Name="tblSeguro">
+    <Key>
+      <PropertyRef Name="idSeguro" />
+    </Key>
+    <Property Name="idSeguro" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombreSeguro" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tblPacientes" Relationship="Self.FK_SeguroPaciente" FromRole="tblSeguro" ToRole="tblPaciente" />
+  </EntityType>
+  <Association Name="FK_CentroMedicoCita">
+    <End Role="tblCentroMedico" Type="Self.tblCentroMedico" Multiplicity="1" />
+    <End Role="tblCita" Type="Self.tblCita" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblCentroMedico">
+        <PropertyRef Name="idCentroMedico" />
+      </Principal>
+      <Dependent Role="tblCita">
+        <PropertyRef Name="idCentroMedico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DoctorCita">
+    <End Role="tblDoctor" Type="Self.tblDoctor" Multiplicity="1" />
+    <End Role="tblCita" Type="Self.tblCita" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblDoctor">
+        <PropertyRef Name="idDoctor" />
+      </Principal>
+      <Dependent Role="tblCita">
+        <PropertyRef Name="idDoctor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EstadoC_Cita">
+    <End Role="tblEstadoCita" Type="Self.tblEstadoCita" Multiplicity="1" />
+    <End Role="tblCita" Type="Self.tblCita" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblEstadoCita">
+        <PropertyRef Name="idEstado" />
+      </Principal>
+      <Dependent Role="tblCita">
+        <PropertyRef Name="idEstadoCita" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PacienteCita">
+    <End Role="tblPaciente" Type="Self.tblPaciente" Multiplicity="1" />
+    <End Role="tblCita" Type="Self.tblCita" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblPaciente">
+        <PropertyRef Name="idPaciente" />
+      </Principal>
+      <Dependent Role="tblCita">
+        <PropertyRef Name="idPaciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EspecialidadDoctor">
+    <End Role="tblEspecialidad" Type="Self.tblEspecialidad" Multiplicity="1" />
+    <End Role="tblDoctor" Type="Self.tblDoctor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblEspecialidad">
+        <PropertyRef Name="idEspecialidad" />
+      </Principal>
+      <Dependent Role="tblDoctor">
+        <PropertyRef Name="idEspecialidad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SeguroPaciente">
+    <End Role="tblSeguro" Type="Self.tblSeguro" Multiplicity="1" />
+    <End Role="tblPaciente" Type="Self.tblPaciente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblSeguro">
+        <PropertyRef Name="idSeguro" />
+      </Principal>
+      <Dependent Role="tblPaciente">
+        <PropertyRef Name="idSeguro" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="dbCitasMedicasEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tblCentroMedicoes" EntityType="Self.tblCentroMedico" />
+    <EntitySet Name="tblCitas" EntityType="Self.tblCita" />
+    <EntitySet Name="tblDoctors" EntityType="Self.tblDoctor" />
+    <EntitySet Name="tblEspecialidads" EntityType="Self.tblEspecialidad" />
+    <EntitySet Name="tblEstadoCitas" EntityType="Self.tblEstadoCita" />
+    <EntitySet Name="tblPacientes" EntityType="Self.tblPaciente" />
+    <EntitySet Name="tblSeguroes" EntityType="Self.tblSeguro" />
+    <AssociationSet Name="FK_CentroMedicoCita" Association="Self.FK_CentroMedicoCita">
+      <End Role="tblCentroMedico" EntitySet="tblCentroMedicoes" />
+      <End Role="tblCita" EntitySet="tblCitas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DoctorCita" Association="Self.FK_DoctorCita">
+      <End Role="tblDoctor" EntitySet="tblDoctors" />
+      <End Role="tblCita" EntitySet="tblCitas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EstadoC_Cita" Association="Self.FK_EstadoC_Cita">
+      <End Role="tblEstadoCita" EntitySet="tblEstadoCitas" />
+      <End Role="tblCita" EntitySet="tblCitas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PacienteCita" Association="Self.FK_PacienteCita">
+      <End Role="tblPaciente" EntitySet="tblPacientes" />
+      <End Role="tblCita" EntitySet="tblCitas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EspecialidadDoctor" Association="Self.FK_EspecialidadDoctor">
+      <End Role="tblEspecialidad" EntitySet="tblEspecialidads" />
+      <End Role="tblDoctor" EntitySet="tblDoctors" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SeguroPaciente" Association="Self.FK_SeguroPaciente">
+      <End Role="tblSeguro" EntitySet="tblSeguroes" />
+      <End Role="tblPaciente" EntitySet="tblPacientes" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

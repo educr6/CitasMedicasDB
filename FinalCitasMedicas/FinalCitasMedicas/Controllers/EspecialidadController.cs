@@ -9,11 +9,12 @@ namespace FinalCitasMedicas.Controllers
 {
     public class EspecialidadController : Controller
     {
-        protected dbCitasMedicasEntities db = new dbCitasMedicasEntities();
+        protected dbCitasMedicasEntities1 db = new dbCitasMedicasEntities1();
 
         // GET: Especialidad
         public ActionResult Index()
         {
+            ViewBag.isAdmin = TipoUsuarioElegido.isAdmin;
             var especialidades = getEspecialidades();
             return View(especialidades);
         }

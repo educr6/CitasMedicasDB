@@ -13,10 +13,10 @@ namespace FinalCitasMedicas
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class dbCitasMedicasEntities : DbContext
+    public partial class dbCitasMedicasEntities1 : DbContext
     {
-        public dbCitasMedicasEntities()
-            : base("name=dbCitasMedicasEntities")
+        public dbCitasMedicasEntities1()
+            : base("name=dbCitasMedicasEntities1")
         {
         }
     

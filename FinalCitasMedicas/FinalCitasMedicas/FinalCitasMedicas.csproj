@@ -128,20 +128,20 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="ConexionDB.Context.cs">
+    <Compile Include="CitasMedicas.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ConexionDB.Context.tt</DependentUpon>
+      <DependentUpon>CitasMedicas.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="ConexionDB.cs">
+    <Compile Include="CitasMedicas.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ConexionDB.tt</DependentUpon>
+      <DependentUpon>CitasMedicas.tt</DependentUpon>
     </Compile>
-    <Compile Include="ConexionDB.Designer.cs">
+    <Compile Include="CitasMedicas.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ConexionDB.edmx</DependentUpon>
+      <DependentUpon>CitasMedicas.edmx</DependentUpon>
     </Compile>
     <Compile Include="Controllers\CentroController.cs" />
     <Compile Include="Controllers\CitaController.cs" />
@@ -149,45 +149,47 @@
     <Compile Include="Controllers\EspecialidadController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PacienteController.cs" />
+    <Compile Include="Controllers\UserTypeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="tblCentroMedico.cs">
-      <DependentUpon>ConexionDB.tt</DependentUpon>
+      <DependentUpon>CitasMedicas.tt</DependentUpon>
     </Compile>
     <Compile Include="tblCita.cs">
-      <DependentUpon>ConexionDB.tt</DependentUpon>
+      <DependentUpon>CitasMedicas.tt</DependentUpon>
     </Compile>
     <Compile Include="tblDoctor.cs">
-      <DependentUpon>ConexionDB.tt</DependentUpon>
+      <DependentUpon>CitasMedicas.tt</DependentUpon>
     </Compile>
     <Compile Include="tblEspecialidad.cs">
-      <DependentUpon>ConexionDB.tt</DependentUpon>
+      <DependentUpon>CitasMedicas.tt</DependentUpon>
     </Compile>
     <Compile Include="tblEstadoCita.cs">
-      <DependentUpon>ConexionDB.tt</DependentUpon>
+      <DependentUpon>CitasMedicas.tt</DependentUpon>
     </Compile>
     <Compile Include="tblPaciente.cs">
-      <DependentUpon>ConexionDB.tt</DependentUpon>
+      <DependentUpon>CitasMedicas.tt</DependentUpon>
     </Compile>
     <Compile Include="tblSeguro.cs">
-      <DependentUpon>ConexionDB.tt</DependentUpon>
+      <DependentUpon>CitasMedicas.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\CitaViewModel.cs" />
     <Compile Include="ViewModel\DoctorViewModel.cs" />
     <Compile Include="ViewModel\PacienteViewModel.cs" />
+    <Compile Include="ViewModel\TipoUsuarioViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ConexionDB.Context.tt">
+    <Content Include="CitasMedicas.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ConexionDB.Context.cs</LastGenOutput>
-      <DependentUpon>ConexionDB.edmx</DependentUpon>
+      <DependentUpon>CitasMedicas.edmx</DependentUpon>
+      <LastGenOutput>CitasMedicas.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="ConexionDB.tt">
+    <Content Include="CitasMedicas.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ConexionDB.edmx</DependentUpon>
-      <LastGenOutput>ConexionDB.cs</LastGenOutput>
+      <DependentUpon>CitasMedicas.edmx</DependentUpon>
+      <LastGenOutput>CitasMedicas.cs</LastGenOutput>
     </Content>
     <Content Include="Content\bootstrap-sortable.css" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -208,12 +210,12 @@
     <Content Include="Scripts\bootstrap-sortable.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="ConexionDB.edmx">
+    <EntityDeploy Include="CitasMedicas.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ConexionDB.Designer.cs</LastGenOutput>
+      <LastGenOutput>CitasMedicas.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="ConexionDB.edmx.diagram">
-      <DependentUpon>ConexionDB.edmx</DependentUpon>
+    <Content Include="CitasMedicas.edmx.diagram">
+      <DependentUpon>CitasMedicas.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -259,6 +261,7 @@
     <Content Include="Views\Cita\Index.cshtml" />
     <Content Include="Views\Cita\CitaForm.cshtml" />
     <Content Include="Views\Cita\Delete.cshtml" />
+    <Content Include="Views\UserType\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

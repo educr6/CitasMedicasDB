@@ -337,7 +337,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="dbCitasMedicasEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="dbCitasMedicasEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="tblCentroMedicoes" EntityType="Self.tblCentroMedico" />
           <EntitySet Name="tblCitas" EntityType="Self.tblCita" />
           <EntitySet Name="tblDoctors" EntityType="Self.tblDoctor" />
@@ -375,7 +375,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="dbCitasMedicasModelStoreContainer" CdmEntityContainer="dbCitasMedicasEntities">
+        <EntityContainerMapping StorageEntityContainer="dbCitasMedicasModelStoreContainer" CdmEntityContainer="dbCitasMedicasEntities1">
           <EntitySetMapping Name="tblCentroMedicoes">
             <EntityTypeMapping TypeName="dbCitasMedicasModel.tblCentroMedico">
               <MappingFragment StoreEntitySet="tblCentroMedico">

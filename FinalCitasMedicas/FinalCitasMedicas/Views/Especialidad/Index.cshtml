@@ -13,9 +13,14 @@
 </div>
 <h3>   </h3>
 
-<button type="button" onclick="location.href='@Url.Action("New", "Especialidad")'">
-    Nueva Especialidad
-</button>
+
+@if (ViewBag.isAdmin)
+{
+    <button type="button" onclick="location.href='@Url.Action("New", "Especialidad")'">
+        Nueva Especialidad
+    </button>
+}
+
 <hr style="border-width: 5px;" />
 
 <div class="table-responsive">
@@ -24,19 +29,29 @@
         <thead>
             <tr class="warning">
                 <th>Especialidad</th>
-                <th>Acciones</th>
+
+                @if (ViewBag.isAdmin)
+                {
+                    <th>Acciones</th>
+                }
+
 
             </tr>
             @{
                 foreach (var p in Model)
                 {
-                    <tr>
-                        <td style="padding:0 15px 0 15px;">@p.nombreEspecialidad</td>
-                        <td>
-                            @Html.ActionLink("| Editar", "Edit", "Especialidad", new { id = p.idEspecialidad }, null)
-                            @Html.ActionLink("| Eliminar", "Delete", "Especialidad", new { id = p.idEspecialidad }, null)
-                        </td>
-                    </tr>
+            <tr>
+                <td style="padding:0 15px 0 15px;">@p.nombreEspecialidad</td>
+
+                @if (ViewBag.isAdmin)
+                {
+                    <td>
+                        @Html.ActionLink("| Editar", "Edit", "Especialidad", new { id = p.idEspecialidad }, null)
+                        @Html.ActionLink("| Eliminar", "Delete", "Especialidad", new { id = p.idEspecialidad }, null)
+                    </td>
+                }
+
+            </tr>
                 }
             }
         </thead>

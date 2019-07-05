@@ -10,7 +10,7 @@ namespace FinalCitasMedicas.Controllers
 {
     public class DoctorController : Controller
     {
-        protected dbCitasMedicasEntities db = new dbCitasMedicasEntities();
+        protected dbCitasMedicasEntities1 db = new dbCitasMedicasEntities1();
 
         // GET: Doctor
         public ActionResult Index()
@@ -25,7 +25,8 @@ namespace FinalCitasMedicas.Controllers
                     new DoctorViewModel()
                     {
                         doctor = doctores[i],
-                        especialidad = db.tblEspecialidads.SqlQuery("SELECT * FROM tblEspecialidad WHERE idEspecialidad = " + doctores[i].idEspecialidad).FirstOrDefault()
+                        especialidad = db.tblEspecialidads.SqlQuery("SELECT * FROM tblEspecialidad WHERE idEspecialidad = " + doctores[i].idEspecialidad).FirstOrDefault(),
+                        isAdmin = TipoUsuarioElegido.isAdmin
                     }
                 );
             }

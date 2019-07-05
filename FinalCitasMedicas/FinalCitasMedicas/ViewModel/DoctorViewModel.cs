@@ -10,5 +10,6 @@ namespace FinalCitasMedicas.ViewModel
         public tblDoctor doctor { get; set; }
         public tblEspecialidad especialidad { get; set; }
         public List<tblEspecialidad> listaEspecialidad { get; set; }
+        public bool isAdmin { get; set; }
     }
 }

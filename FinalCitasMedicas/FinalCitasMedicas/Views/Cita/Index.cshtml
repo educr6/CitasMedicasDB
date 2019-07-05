@@ -28,25 +28,34 @@
                 <th>Estado</th>
                 <th>Fecha</th>
                 <th>Hora</th>
-                <th>Acciones</th>
+                @if (ViewBag.isAdmin)
+                {
+                    <th>Acciones</th>
+                }
+
             </tr>
             @{
                 foreach (var p in Model)
                 {
-                    <tr>
-                        <td style="padding:0 15px 0 15px;">@p.miPaciente.nombrePaciente</td>
-                        <td style="padding:0 15px 0 15px;">@p.miDoctor.nombreDoctor</td>
-                        <td style="padding:0 15px 0 15px;">@p.miCentro.nombreCentro</td>
-                        <td style="padding:0 15px 0 15px;">@p.miEstado.nombreEstado</td>
-                        <td style="padding:0 15px 0 15px;">@p.miCita.fechaCita.Date.ToString("dd MMM yyyy")</td>
-                        <td style="padding:0 15px 0 15px;">@p.miCita.horaCita</td>
+            <tr>
+                <td style="padding:0 15px 0 15px;">@p.miPaciente.nombrePaciente</td>
+                <td style="padding:0 15px 0 15px;">@p.miDoctor.nombreDoctor</td>
+                <td style="padding:0 15px 0 15px;">@p.miCentro.nombreCentro</td>
+                <td style="padding:0 15px 0 15px;">@p.miEstado.nombreEstado</td>
+                <td style="padding:0 15px 0 15px;">@p.miCita.fechaCita.Date.ToString("dd MMM yyyy")</td>
+                <td style="padding:0 15px 0 15px;">@p.miCita.horaCita</td>
 
-                        <td>
-                            @Html.ActionLink("| Editar", "Edit", "Cita", new { id = p.miCita.idCita }, null)
-                            @Html.ActionLink("| Eliminar", "Delete", "Cita", new { id = p.miCita.idCita }, null)
+                @if (ViewBag.isAdmin)
+                {
+                    <td>
+                        @Html.ActionLink("| Editar", "Edit", "Cita", new { id = p.miCita.idCita }, null)
+                        @Html.ActionLink("| Eliminar", "Delete", "Cita", new { id = p.miCita.idCita }, null)
 
-                        </td>
-                    </tr>
+                    </td>
+
+                }
+
+            </tr>
                 }
             }
         </thead>

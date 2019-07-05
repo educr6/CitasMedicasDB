@@ -13,9 +13,13 @@
 </div>
 <h3>   </h3>
 
-<button type="button" onclick="location.href='@Url.Action("New", "Centro")'">
-    Nuevo Centro
-</button>
+@if (ViewBag.isAdmin)
+{
+    <button type="button" onclick="location.href='@Url.Action("New", "Centro")'">
+        Nuevo Centro
+    </button>
+}
+
 <hr style="border-width: 5px;" />
 
 <div class="table-responsive">
@@ -27,7 +31,12 @@
                 <th>Telefono</th>
                 <th>Direccion</th>
                 <th>Pagina Web</th>
-                <th>Acciones</th>
+
+                @if (ViewBag.isAdmin)
+                {
+                    <th>Acciones</th>
+                }
+
 
             </tr>
             @{
@@ -39,8 +48,13 @@
                         <td style="padding:0 15px 0 15px;">@p.direccionCentro</td>
                         <td style="padding:0 15px 0 15px;">@p.paginaWebCentro</td>
                         <td>
-                            @Html.ActionLink("| Editar", "Edit", "Centro", new { id = p.idCentroMedico }, null)
-                            @Html.ActionLink("| Eliminar", "Delete", "Centro", new { id = p.idCentroMedico }, null)
+                            @if (ViewBag.isAdmin)
+                            {
+                                @Html.ActionLink("| Editar", "Edit", "Centro", new { id = p.idCentroMedico }, null)
+                                @Html.ActionLink("| Eliminar", "Delete", "Centro", new { id = p.idCentroMedico }, null)
+
+                            }
+
                         </td>
                     </tr>
                 }

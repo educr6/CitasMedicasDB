@@ -10,12 +10,13 @@ namespace FinalCitasMedicas.Controllers
 {
     public class PacienteController : Controller
     {
-        protected dbCitasMedicasEntities db = new dbCitasMedicasEntities();
+        protected dbCitasMedicasEntities1 db = new dbCitasMedicasEntities1();
         // GET: Paciente
         public ActionResult Index()
         {
             var pacientes = db.tblPacientes.SqlQuery("SELECT * FROM tblPaciente").ToList();
             var pacienteList = new List<PacienteViewModel>();
+            ViewBag.isAdmin = TipoUsuarioElegido.isAdmin;
 
 
             for (int i = 0; i < pacientes.Count(); i++)
@@ -24,7 +25,8 @@ namespace FinalCitasMedicas.Controllers
                     new PacienteViewModel()
                     {
                         paciente = pacientes[i],
-                        seguro = db.tblSeguroes.SqlQuery("SELECT * FROM tblSeguro WHERE idSeguro = " + pacientes[i].idSeguro).FirstOrDefault()
+                        seguro = db.tblSeguroes.SqlQuery("SELECT * FROM tblSeguro WHERE idSeguro = " + pacientes[i].idSeguro).FirstOrDefault(),
+                        isAdmin = TipoUsuarioElegido.isAdmin
                     }
                 );
             }

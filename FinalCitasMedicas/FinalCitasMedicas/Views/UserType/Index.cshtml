@@ -1,0 +1,14 @@
+﻿@model FinalCitasMedicas.ViewModel.TipoUsuarioViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Tipos de usuarios</h2>
+<h2>Su usuario actual es: @Model.tipoDeUsuario</h2>
+
+
+<button type="button" onclick="location.href='@Url.Action("setAdmin", "UserType")'">Soy admin</button>
+
+<button type="button" onclick="location.href='@Url.Action("setPatient", "UserType")'">Soy paciente</button>
+

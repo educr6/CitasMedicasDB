@@ -1,4 +1,4 @@
-﻿@model IEnumerable<FinalCitasMedicas.ViewModel.DoctorViewModel>
+﻿@model List<FinalCitasMedicas.ViewModel.DoctorViewModel>
 
 @{
     ViewBag.Title = "Doctores";
@@ -12,9 +12,14 @@
 
 <h3>   </h3>
 
-<button type="button" onclick="location.href='@Url.Action("New", "Doctor")'">
-    Nuevo Doctor
-</button>
+@if (Model[0].isAdmin == true)
+{
+    <button type="button" onclick="location.href='@Url.Action("New", "Doctor")'">
+        Nuevo Doctor
+    </button>
+
+}
+
 <hr style="border-width: 5px;" />
 
 <div class="table-responsive">
@@ -27,7 +32,12 @@
                 <th>Telefono</th>
                 <th>Correo</th>
                 <th>Especialidad</th>
-                <th>Acciones</th>
+
+                @if (Model[0].isAdmin)
+                {
+                    <th>Acciones</th>
+                }
+
             </tr>
             @{
                 foreach (var p in Model)
@@ -38,8 +48,13 @@
                         <td style="padding:0 15px 0 15px;">@p.doctor.correoDoctor</td>
                         <td style="padding:0 15px 0 15px;">@p.especialidad.nombreEspecialidad</td>
                         <td>
-                            @Html.ActionLink("| Editar", "Edit", "Doctor", new { id = p.doctor.idDoctor }, null)
-                            @Html.ActionLink("| Eliminar", "Delete", "Doctor", new { id = p.doctor.idDoctor }, null)
+                            @if (Model[0].isAdmin)
+                            {
+                                @Html.ActionLink("| Editar", "Edit", "Doctor", new { id = p.doctor.idDoctor }, null)
+                                @Html.ActionLink("| Eliminar", "Delete", "Doctor", new { id = p.doctor.idDoctor }, null)
+
+                            }
+
 
                         </td>
                     </tr>

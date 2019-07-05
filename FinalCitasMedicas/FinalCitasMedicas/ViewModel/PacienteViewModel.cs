@@ -11,5 +11,6 @@ namespace FinalCitasMedicas.ViewModel
         public tblPaciente paciente { get; set; }
         public tblSeguro seguro { get; set; }
         public IEnumerable<tblSeguro> listSeguro { get; set; }
+        public bool isAdmin { get; set; }
     }
 }

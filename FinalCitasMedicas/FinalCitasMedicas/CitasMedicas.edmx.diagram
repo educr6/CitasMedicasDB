@@ -4,14 +4,14 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="7a735be751eb402cb32c0dca84e82d06" Name="Diagram1" ZoomLevel="81">
-        <EntityTypeShape EntityType="dbCitasMedicasModel.tblCentroMedico" Width="2.25" PointX="8.25" PointY="2.125" IsExpanded="true" />
+      <Diagram DiagramId="8d54904fae9b4e09bdf6fa71c51b0169" Name="Diagram1">
+        <EntityTypeShape EntityType="dbCitasMedicasModel.tblCentroMedico" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
         <EntityTypeShape EntityType="dbCitasMedicasModel.tblCita" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="dbCitasMedicasModel.tblDoctor" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="dbCitasMedicasModel.tblEspecialidad" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbCitasMedicasModel.tblEstadoCita" Width="1.5" PointX="2.875" PointY="4.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbCitasMedicasModel.tblPaciente" Width="1.5" PointX="5.25" PointY="6.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbCitasMedicasModel.tblSeguro" Width="1.5" PointX="2.75" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbCitasMedicasModel.tblEstadoCita" Width="1.5" PointX="3" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbCitasMedicasModel.tblPaciente" Width="1.5" PointX="3" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbCitasMedicasModel.tblSeguro" Width="1.5" PointX="0.75" PointY="11.375" IsExpanded="true" />
         <AssociationConnector Association="dbCitasMedicasModel.FK_CentroMedicoCita" ManuallyRouted="false" />
         <AssociationConnector Association="dbCitasMedicasModel.FK_DoctorCita" ManuallyRouted="false" />
         <AssociationConnector Association="dbCitasMedicasModel.FK_EstadoC_Cita" ManuallyRouted="false" />

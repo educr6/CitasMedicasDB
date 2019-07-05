@@ -10,11 +10,13 @@ namespace FinalCitasMedicas.Controllers
 {
     public class CitaController : Controller
     {
-        protected dbCitasMedicasEntities db = new dbCitasMedicasEntities();
+        protected dbCitasMedicasEntities1 db = new dbCitasMedicasEntities1();
 
         // GET: Cita
         public ActionResult Index()
         {
+
+            ViewBag.isAdmin = TipoUsuarioElegido.isAdmin;
 
             var citas = db.tblCitas.SqlQuery("SELECT * FROM tblCita").ToList();
             var citaViewModel = new List<CitaViewModel>();
